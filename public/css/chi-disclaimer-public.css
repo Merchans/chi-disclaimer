@@ -1,0 +1,141 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+ /**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+
+.chi-bg-modal {
+	position: fixed;
+	width: 100%;
+	/* Full width (cover the whole page) */
+	height: 100%;
+	/* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 500;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.chi-modal-content {
+	width: 546px;
+	height: 326px;
+	padding: 35px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.26);
+	border-radius: 16px;
+	position: relative;
+}
+
+@media (max-width: 600px)
+{
+	.chi-modal-content {
+		width: 100%;
+	}
+
+	.chi-close {
+		right: 15px;
+	}
+	.chi-claim-text
+	{
+		width: 400px!important;
+	}
+}
+
+.chi-logo-black {
+	width: 209px;
+	height: 25px;
+	display: block;
+}
+
+.chi-logo-subtitle {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	/* identical to box height */
+	color: #979797;
+}
+
+.chi-close {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	margin: 10px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.chi-claim-text {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 20px;
+	color: #000000;
+	width: 464px;
+}
+
+.custom-control-label::after {
+	width: 18px;
+	height: 18px;
+	background: #E30613;
+	border-radius: 3px;
+}
+
+input[type=checkbox] {
+	position: relative;
+	cursor: pointer;
+}
+
+input[type=checkbox]:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: -3px;
+	left: 0;
+	border-radius: 3px;
+	background-color: white;
+	background: #E30613;
+	border-radius: 3px;
+}
+
+input[type=checkbox]:checked:after {
+	content: "";
+	display: block;
+	width: 7px;
+	height: 11px;
+	border: solid #FFFFFF;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	position: absolute;
+	top: -1px;
+	left: 6px;
+}
+
+.chi-lable {
+	margin-left: 4px;
+	margin-bottom: 16px;
+}
+
+.container {
+	max-width: 1170px;
+}
+
+.bg-dark {
+	background: #464F55 !important;
+}
