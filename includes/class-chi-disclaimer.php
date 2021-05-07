@@ -1,218 +1,234 @@
 <?php
 
-/**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://github.com/Merchans/
- * @since      1.0.0
- *
- * @package    Chi_Disclaimer
- * @subpackage Chi_Disclaimer/includes
- */
-
-/**
- * The core plugin class.
- *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
- *
- * Also maintains the unique identifier of this plugin as well as the current
- * version of the plugin.
- *
- * @since      1.0.0
- * @package    Chi_Disclaimer
- * @subpackage Chi_Disclaimer/includes
- * @author     chi-disRichard Markovičclaimer <addmarkovic@gmail.com>
- */
-class Chi_Disclaimer {
+	/**
+	 * The file that defines the core plugin class
+	 *
+	 * A class definition that includes attributes and functions used across both the
+	 * public-facing side of the site and the admin area.
+	 *
+	 * @link       https://github.com/Merchans/
+	 * @since      1.0.0
+	 *
+	 * @package    Chi_Disclaimer
+	 * @subpackage Chi_Disclaimer/includes
+	 */
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The core plugin class.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      Chi_Disclaimer_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * This is used to define internationalization, admin-specific hooks, and
+	 * public-facing site hooks.
+	 *
+	 * Also maintains the unique identifier of this plugin as well as the current
+	 * version of the plugin.
+	 *
+	 * @since      1.0.0
+	 * @package    Chi_Disclaimer
+	 * @subpackage Chi_Disclaimer/includes
+	 * @author     chi-disRichard Markovičclaimer <addmarkovic@gmail.com>
 	 */
-	protected $loader;
+	class Chi_Disclaimer {
 
-	/**
-	 * The unique identifier of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
-	 */
-	protected $plugin_name;
+		/**
+		 * The loader that's responsible for maintaining and registering all hooks that power
+		 * the plugin.
+		 *
+		 * @since    1.0.0
+		 * @access   protected
+		 * @var      Chi_Disclaimer_Loader $loader Maintains and registers all hooks for the plugin.
+		 */
+		protected $loader;
 
-	/**
-	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
-	 */
-	protected $version;
+		/**
+		 * The unique identifier of this plugin.
+		 *
+		 * @since    1.0.0
+		 * @access   protected
+		 * @var      string $plugin_name The string used to uniquely identify this plugin.
+		 */
+		protected $plugin_name;
 
-	/**
-	 * Define the core functionality of the plugin.
-	 *
-	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
-	 * the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function __construct() {
-		if ( defined( 'CHI_DISCLAIMER_VERSION' ) ) {
-			$this->version = CHI_DISCLAIMER_VERSION;
-		} else {
-			$this->version = '1.0.0';
+		/**
+		 * The current version of the plugin.
+		 *
+		 * @since    1.0.0
+		 * @access   protected
+		 * @var      string $version The current version of the plugin.
+		 */
+		protected $version;
+
+		/**
+		 * Define the core functionality of the plugin.
+		 *
+		 * Set the plugin name and the plugin version that can be used throughout the plugin.
+		 * Load the dependencies, define the locale, and set the hooks for the admin area and
+		 * the public-facing side of the site.
+		 *
+		 * @since    1.0.0
+		 */
+		public function __construct() {
+			if ( defined( 'CHI_DISCLAIMER_VERSION' ) ) {
+				$this->version = CHI_DISCLAIMER_VERSION;
+			} else {
+				$this->version = '1.0.0';
+			}
+			$this->plugin_name = 'chi-disclaimer';
+
+			$this->load_dependencies();
+			$this->set_locale();
+			$this->define_admin_hooks();
+			$this->define_public_hooks();
+
 		}
-		$this->plugin_name = 'chi-disclaimer';
-
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
-
-	}
-
-	/**
-	 * Load the required dependencies for this plugin.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Chi_Disclaimer_Loader. Orchestrates the hooks of the plugin.
-	 * - Chi_Disclaimer_i18n. Defines internationalization functionality.
-	 * - Chi_Disclaimer_Admin. Defines all hooks for the admin area.
-	 * - Chi_Disclaimer_Public. Defines all hooks for the public side of the site.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function load_dependencies() {
 
 		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
+		 * Load the required dependencies for this plugin.
+		 *
+		 * Include the following files that make up the plugin:
+		 *
+		 * - Chi_Disclaimer_Loader. Orchestrates the hooks of the plugin.
+		 * - Chi_Disclaimer_i18n. Defines internationalization functionality.
+		 * - Chi_Disclaimer_Admin. Defines all hooks for the admin area.
+		 * - Chi_Disclaimer_Public. Defines all hooks for the public side of the site.
+		 *
+		 * Create an instance of the loader which will be used to register the hooks
+		 * with WordPress.
+		 *
+		 * @since    1.0.0
+		 * @access   private
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-chi-disclaimer-loader.php';
+		private function load_dependencies() {
+
+			/**
+			 * The class responsible for orchestrating the actions and filters of the
+			 * core plugin.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-chi-disclaimer-loader.php';
+
+			/**
+			 * The class responsible for defining internationalization functionality
+			 * of the plugin.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-chi-disclaimer-i18n.php';
+
+			/**
+			 * The class responsible for defining all actions that occur in the admin area.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-chi-disclaimer-admin.php';
+
+			/**
+			 * The class responsible for defining all actions that occur in the public-facing
+			 * side of the site.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-chi-disclaimer-public.php';
+
+			$this->loader = new Chi_Disclaimer_Loader();
+
+		}
 
 		/**
-		 * The class responsible for defining internationalization functionality
+		 * Define the locale for this plugin for internationalization.
+		 *
+		 * Uses the Chi_Disclaimer_i18n class in order to set the domain and to register the hook
+		 * with WordPress.
+		 *
+		 * @since    1.0.0
+		 * @access   private
+		 */
+		private function set_locale() {
+
+			$plugin_i18n = new Chi_Disclaimer_i18n();
+
+			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+
+		}
+
+		/**
+		 * Register all of the hooks related to the admin area functionality
 		 * of the plugin.
+		 *
+		 * @since    1.0.0
+		 * @access   private
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-chi-disclaimer-i18n.php';
+		private function define_admin_hooks() {
+
+			$plugin_admin = new Chi_Disclaimer_Admin( $this->get_plugin_name(), $this->get_version() );
+
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		}
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
+		 * Register all of the hooks related to the public-facing functionality
+		 * of the plugin.
+		 *
+		 * @since    1.0.0
+		 * @access   private
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-chi-disclaimer-admin.php';
+		private function define_public_hooks() {
+
+			$plugin_public = new Chi_Disclaimer_Public( $this->get_plugin_name(), $this->get_version() );
+
+
+			$link = $_SERVER['REQUEST_URI'];
+			$link = strtok($link, '?');
+			if ( substr($link, -1) == "/") {
+				$link = rtrim($link, "/");
+			}
+
+			$link_array = explode('/',$link);
+
+			$page = end($link_array);
+
+			if ( $page != 'pristup-odepren' ) {
+				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+				$this->loader->add_action( 'wp_head', $plugin_public, 'add_html_disclaimer_to_header' );
+			}
+
+
+		}
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
+		 * Run the loader to execute all of the hooks with WordPress.
+		 *
+		 * @since    1.0.0
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-chi-disclaimer-public.php';
+		public function run() {
+			$this->loader->run();
+		}
 
-		$this->loader = new Chi_Disclaimer_Loader();
+		/**
+		 * The name of the plugin used to uniquely identify it within the context of
+		 * WordPress and to define internationalization functionality.
+		 *
+		 * @return    string    The name of the plugin.
+		 * @since     1.0.0
+		 */
+		public function get_plugin_name() {
+			return $this->plugin_name;
+		}
 
-	}
+		/**
+		 * The reference to the class that orchestrates the hooks with the plugin.
+		 *
+		 * @return    Chi_Disclaimer_Loader    Orchestrates the hooks of the plugin.
+		 * @since     1.0.0
+		 */
+		public function get_loader() {
+			return $this->loader;
+		}
 
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Chi_Disclaimer_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
+		/**
+		 * Retrieve the version number of the plugin.
+		 *
+		 * @return    string    The version number of the plugin.
+		 * @since     1.0.0
+		 */
+		public function get_version() {
+			return $this->version;
+		}
 
-		$plugin_i18n = new Chi_Disclaimer_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
-	}
-
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_admin_hooks() {
-
-		$plugin_admin = new Chi_Disclaimer_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Chi_Disclaimer_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    Chi_Disclaimer_Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version() {
-		return $this->version;
-	}
-
-}

@@ -12,7 +12,7 @@
 	position: fixed;
 	width: 100%;
 	/* Full width (cover the whole page) */
-	height: 100%;
+	height: auto!important;
 	/* Full height (cover the whole page) */
 	top: 0;
 	left: 0;
@@ -28,7 +28,7 @@
 
 .chi-modal-content {
 	width: 546px;
-	height: 326px;
+	height: auto!important;
 	padding: 35px;
 	background: #FFFFFF;
 	box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.26);
@@ -93,6 +93,14 @@
 	border-radius: 3px;
 }
 
+.custom-control {
+	position: relative;
+	display: block;
+	min-height: 1.5rem;
+	padding-left: 1.5rem;
+	margin: 1rem 0;
+}
+
 input[type=checkbox] {
 	position: relative;
 	cursor: pointer;
@@ -136,6 +144,47 @@ input[type=checkbox]:checked:after {
 	max-width: 1170px;
 }
 
+label.chi-lable {
+	font-weight: normal;
+	display: inline;
+	margin-left: 4px;
+}
 .bg-dark {
 	background: #464F55 !important;
+}
+
+a#chi-submit,
+.chi-btn-more-acticle {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 39px;
+	color: #FFFFFF;
+	background: #E30613;
+	-webkit-appearance: none;
+	-webkit-box-shadow: 0px 10px 20px rgb(227 6 19 / 20%);
+	box-shadow: 0px 10px 20px rgb(227 6 19 / 20%);
+	-webkit-appearance: none;
+	border-radius: 6px;
+	width: 275px;
+	height: 50px;
+}
+
+
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	color: #212529;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

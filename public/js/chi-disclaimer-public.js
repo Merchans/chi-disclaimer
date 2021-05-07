@@ -29,15 +29,32 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-	$.urlParam = function (name) {
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-		return results[1] || 0;
+	var close = document.getElementById("chi-close");
+	if (close) {
+		close.addEventListener("click", function () {
+			console.log("click");
+			window.location.replace("pristup-odepren");
+		});
 	}
 
-	if ($.urlParam('company') == 'pfizer') {
-		document.getElementById("chi-close").addEventListener("click", function () {
-			window.location.replace("http://google.com");
-		});
+	$.urlParam = function (get, name) {
+		var results = new RegExp('[\?&]' + get + '=([^&#]*)').exec(window.location.href);
+
+		if (results) {
+			if (results[1]) {
+				if (results[1] == name) {
+					return 1;
+				}
+			}
+		}
+
+		return 0;
+	}
+
+	if ($.urlParam('company', 'pfizer')) {
+
+
+
 		setTimeout(function () {
 			/*document.querySelector(".chi-bg-modal").style.display = "flex".hide();*/
 			$("#pfizerPopupContainer")
@@ -54,13 +71,10 @@
 			});
 
 		document.getElementById("pfizer-confirm-no").addEventListener("click", function () {
-			window.location.replace("http://google.com");
+			window.location.replace("pristup-odepren");
 		});
-	} else {
 
-		document.getElementById("chi-close").addEventListener("click", function () {
-			window.location.replace("http://google.com");
-		});
+	} else {
 
 		var chiConfirm = localStorage.getItem("chi-confirm");
 		setTimeout(function () {
@@ -74,10 +88,16 @@
 		}, 100)
 		document.getElementById("chi-submit").addEventListener("click",
 			function (e) {
-				if ($('#customCheck1').is(':checked')) {
+
+
+
+				if ($('#customCheck1').is(':checked') && $('#customCheck2').is(':checked')) {
 					document.querySelector(".chi-bg-modal#popupContainer").style.display = "none";
 					localStorage.setItem('chi-confirm', 'true');
+				} else {
+					alert('Pro pokračování do odborné sekce je potřeba souhlasit s podmínkami.');
 				}
+
 			});
 	}
 

@@ -6,7 +6,7 @@
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">UPOZORNĚNÍ</h5>
 					<button type="button" class="close" class="chi-close" id="chi-close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
