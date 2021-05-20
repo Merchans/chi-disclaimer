@@ -75,6 +75,7 @@
 			 */
 
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/chi-disclaimer-public.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name.'_cookieconsent2', '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css', array(), $this->version, 'all', true );
 
 		}
 
@@ -98,6 +99,8 @@
 			 */
 
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/chi-disclaimer-public.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name.'_cookieconsent2', '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name.'_cookieconsent2-settings', plugin_dir_url( __FILE__ ) . 'js/chi-disclaimer-public.js', array( 'jquery', $this->plugin_name.'_cookieconsent2' ), $this->version, true );
 
 		}
 
