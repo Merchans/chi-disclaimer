@@ -1,25 +1,23 @@
-$(document).ready(function(){
+$(document).ready(function () {
+	window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+			"palette": {
+				"popup": {
+					"background": "#2E2E2E",
+					"text": "#fcfcfc"
+				},
+				"button": {
+					"background": "#E30613",
+					"text": "#fffcfc"
+				}
 
-	document.getElementById("chi-close").addEventListener("click", function()
-	{
-		window.location.replace("http://google.com");
-	});
-	var chiConfirm = localStorage.getItem("chi-confirm");
-	setTimeout(function(){
-		if (!chiConfirm)
-		{
-			/*document.querySelector(".chi-bg-modal").style.display = "flex".hide();*/
-			$("#popupContainer")
-				.css("display", "flex")
-				.hide()
-				.fadeIn();
-		}
-	}, 1000)
-	document.getElementById("chi-submit").addEventListener("click",
-		function(e){
-			if ($('#customCheck1').is(':checked')) {
-				document.querySelector(".chi-bg-modal").style.display = "none";
-				localStorage.setItem('chi-confirm', 'true');
+			},
+			"theme": "edgeless",
+			"content": {
+				"message": "Tento web používá k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.",
+				"dismiss": "V pořádku",
+				"link": "Další informace",
+				"href": "https://www.kongres-online.cz/zasady-pouzivani-cookies/"
 			}
-		});
+		})});
 });
