@@ -30,6 +30,9 @@
 	 */
 
 	var close = document.getElementById("chi-close");
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+
 	if (close) {
 		close.addEventListener("click", function () {
 			console.log("click");
@@ -74,7 +77,11 @@
 			window.location.replace("pristup-odepren");
 		});
 
-	} else {
+	} 
+	 else if(url.searchParams.get("external_id")) {
+		localStorage.setItem('chi-confirm', 'true');
+	 }
+	else {
 
 		var chiConfirm = localStorage.getItem("chi-confirm");
 		setTimeout(function () {
