@@ -101,12 +101,12 @@
 	margin: 1rem 0;
 }
 
-input[type=checkbox] {
+.chi-modal-content  input[type=checkbox] {
 	position: relative;
 	cursor: pointer;
 }
 
-input[type=checkbox]:before {
+.chi-modal-content  input[type=checkbox]:before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -120,7 +120,7 @@ input[type=checkbox]:before {
 	border-radius: 3px;
 }
 
-input[type=checkbox]:checked:after {
+.chi-modal-content input[type=checkbox]:checked:after {
 	content: "";
 	display: block;
 	width: 7px;
@@ -185,4 +185,12 @@ a#chi-submit,
 	line-height: 1.5;
 	border-radius: .25rem;
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#c-p-bn {
+    background-color: #E30613!important
+}
+
+#c-inr {
+	font-family: "Source Sans Pro", sans-serif!important
 }
